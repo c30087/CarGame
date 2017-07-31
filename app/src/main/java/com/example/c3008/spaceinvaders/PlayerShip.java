@@ -91,6 +91,7 @@ public class PlayerShip {
         if(shipMoving == RIGHT){
             x = x + shipSpeed / fps;
         }
+        //boundaries of playership x-coordinates
         if(x<0||x>975){
             shipMoving = STOPPED;
         }

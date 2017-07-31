@@ -1,5 +1,10 @@
 package com.example.c3008.spaceinvaders;
 
+/**
+ * Created by c3008 on 7/28/2017.
+ */
+
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,7 +18,7 @@ import java.util.Random;
  * Created by c3008 on 7/25/2017.
  */
 
-public class Invader {
+public class Invader1 {
     RectF rect;
 
 
@@ -45,7 +50,7 @@ public class Invader {
 
     boolean isVisible;
 
-    public Invader(Context context, int row, int column, int screenX, int screenY) {
+    public Invader1(Context context, int row, int column, int screenX, int screenY) {
 
         // Initialize a blank RectF
         rect = new RectF();
@@ -79,8 +84,7 @@ public class Invader {
                 false);
 
         // How fast is the invader in pixels per second
-        shipSpeed = (int) (Math.random()*201+400);
-        System.out.print(shipSpeed);
+        shipSpeed = 400;
     }
     public void setInvisible(){
         isVisible = false;

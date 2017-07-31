@@ -1,5 +1,6 @@
 package com.example.c3008.spaceinvaders;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,10 +13,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.io.IOException;
 
@@ -91,6 +95,13 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
     private boolean uhOrOh;
     // When did we last play a menacing sound
     private long lastMenaceTime = System.currentTimeMillis();
+
+
+
+
+
+
+
     // When the we initialize (call new()) on gameView
 // This special constructor method runs
     public SpaceInvadersView(Context context, int x, int y) {
@@ -168,8 +179,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
         // Build an army of invaders
         numInvaders = 0;
-        for(int column = 0; column < 1; column ++ ){
-            for(int row = 0; row < 1; row ++ ){
+        for(int column = 0; column < 3; column ++ ){
+            for(int row = 0; row < 3; row ++ ){
                 invaders[numInvaders] = new Invader(context, row, column, screenX, screenY);
                 numInvaders ++;
             }
@@ -213,19 +224,19 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
             // Play a sound based on the menace level
             if(!paused) {
                 if ((startFrameTime - lastMenaceTime) > menaceInterval) {
-                    if (uhOrOh) {
+                    //if (uhOrOh) {
                         // Play Uh
-                        soundPool.play(uhID, 1, 1, 0, 0, 1);
+                        //soundPool.play(uhID, 1, 1, 0, 0, 1);
 
-                    } else {
+                    //} else {
                         // Play Oh
-                        soundPool.play(ohID, 1, 1, 0, 0, 1);
-                    }
+                        //soundPool.play(ohID, 1, 1, 0, 0, 1);
+                    //}
 
                     // Reset the last menace time
-                    lastMenaceTime = System.currentTimeMillis();
+                    //lastMenaceTime = System.currentTimeMillis();
                     // Alter value of uhOrOh
-                    uhOrOh = !uhOrOh;
+                    //uhOrOh = !uhOrOh;
                 }
             }
 
@@ -394,9 +405,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
         }
 
         if (lives<0){
-
             Intent intent = new Intent(context, LoseScreen.class);
-            startActivity(intent);
+            context.startActivity(intent);
         }
 
     }
@@ -424,6 +434,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
             // Choose the brush color for drawing
             paint.setColor(Color.argb(255,  255, 255, 255));
+
+
 
             // Draw the player spaceship
             canvas.drawBitmap(playerShip.getBitmap(), playerShip.getX(), screenY - 200, paint);
