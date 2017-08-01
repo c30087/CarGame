@@ -13,19 +13,24 @@ import android.view.View;
 import android.widget.Button;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.widget.TextView;
 
 public class LoseScreen extends Activity {
 
     Button button;
     Context context;
+    TextView mTextview;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_space_invaders2);
+        mTextview = (TextView)findViewById(R.id.textView2);
+
+        mTextview.setText(getIntent().getStringExtra("Score:"));
     }
-    public void sendMessage(View view){
-        Intent intent = new Intent( this, SpaceInvadersView.class);
+    public void tryAgain(View view){
+        Intent intent = new Intent( this, SpaceInvadersActivity.class);
         startActivity(intent);
     }
 
