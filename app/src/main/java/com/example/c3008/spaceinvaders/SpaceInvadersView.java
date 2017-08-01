@@ -179,8 +179,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
         // Build an army of invaders
         numInvaders = 0;
-        for(int column = 0; column < 3; column ++ ){
-            for(int row = 0; row < 3; row ++ ){
+        for(int column = 0; column < 7; column ++ ){
+            for(int row = 0; row < 1; row ++ ){
                 invaders[numInvaders] = new Invader(context, row, column, screenX, screenY);
                 numInvaders ++;
             }
@@ -256,14 +256,14 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
         boolean lost = false;
 
         // Move the player's ship
-        playerShip.update(fps);
+        playerShip.update(fps, screenX);
 
         // Update the invaders if visible
         for(int i = 0; i < numInvaders; i++){
 
             if(invaders[i].getVisibility()) {
                 // Move the next invader
-                invaders[i].update(fps);
+                invaders[i].update(fps, screenY);
 
                 // Does he want to take a shot?
                 if(invaders[i].takeAim(playerShip.getX(),
@@ -396,10 +396,14 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
 
 
+        boolean collided = false;
+        for(int i=0; i<numInvaders;i++) {
+            if (RectF.intersects(playerShip.getRect(), invaders[i].getRect())) {
+                collided = true;
+            }
+        }
 
-
-
-        if (collision() == true){
+        if (collided == true){
             lives--;
 
         }
@@ -407,17 +411,20 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
         if (lives<0){
             Intent intent = new Intent(context, LoseScreen.class);
             context.startActivity(intent);
+            
         }
 
     }
 
     private boolean collision(){
-        if (RectF.intersects(playerShip.getRect(), invaders[0].getRect())) {
-            return true;
+        for(int i=0; i<numInvaders;i++) {
+            if (RectF.intersects(playerShip.getRect(), invaders[i].getRect())) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
 
@@ -500,7 +507,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
                 paused = false;
 
-                if(motionEvent.getY() > screenY - screenY / 8) {
+                if(motionEvent.getY() > screenY - screenY ) {
                     if (motionEvent.getX() > screenX / 2) {
                         playerShip.setMovementState(playerShip.RIGHT);
                     } else {

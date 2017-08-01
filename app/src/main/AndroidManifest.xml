@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name= ".LoseScreen">
+        <activity android:name= ".LoseScreen"
+            android:screenOrientation="portrait">
 
         </activity>
 

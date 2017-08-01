@@ -83,18 +83,21 @@ public class PlayerShip {
     // This update method will be called from update in SpaceInvadersView
     // It determines if the player ship needs to move and changes the coordinates
     // contained in x if necessary
-    public void update(long fps){
+    public void update(long fps, int screenX){
         if(shipMoving == LEFT){
-            x = x - shipSpeed / fps;
+            if (x >0) {
+                x = x - shipSpeed / fps;
+            }
         }
 
         if(shipMoving == RIGHT){
-            x = x + shipSpeed / fps;
+            if (x + length < screenX) {
+                x = x + shipSpeed / fps;
+            }
         }
         //boundaries of playership x-coordinates
-        if(x<0||x>975){
-            shipMoving = STOPPED;
-        }
+
+
 
 
         // Update rect which is used to detect hits

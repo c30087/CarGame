@@ -61,9 +61,31 @@ public class Invader {
         x = column * (length + padding);
         y = row * (length + padding/4);
 
+        int definingStereotype = (int) Math.random()*5+1;
+        if (definingStereotype == 1){
+            bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone1);
+            bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone11);
+        }
+        else if (definingStereotype ==2){
+            bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone2);
+            bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone21);
+        }
+        else if (definingStereotype==3){
+            bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone3);
+            bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone31);
+        }
+        else if (definingStereotype==4){
+            bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone4);
+            bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone41);
+        }
+        else if (definingStereotype==5){
+            bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone5);
+            bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.trafficcone51);
+        }
         // Initialize the bitmap
-        bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.stereotype1);
+        /*bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.stereotype1);
         bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.stereotype2);
+        */
 
 
         // stretch the first bitmap to a size appropriate for the screen resolution
@@ -79,8 +101,8 @@ public class Invader {
                 false);
 
         // How fast is the invader in pixels per second
-        shipSpeed = (int) (Math.random()*201+400);
-        System.out.print(shipSpeed);
+        shipSpeed = (int) (Math.random()*601+200);
+
     }
     public void setInvisible(){
         isVisible = false;
@@ -113,9 +135,9 @@ public class Invader {
     public float getLength(){
         return length;
     }
-    public void update(long fps){
+    public void update(long fps, int screenY){
         int score = 0;
-        if (y > 2000 && y < 2200){
+        if (getY() >= screenY){
             y = 0;
             SpaceInvadersView.updateScore();
         }
