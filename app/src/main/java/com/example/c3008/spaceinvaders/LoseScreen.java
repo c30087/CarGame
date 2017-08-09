@@ -8,6 +8,7 @@ package com.example.c3008.spaceinvaders;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,18 +21,20 @@ public class LoseScreen extends Activity {
     Button button;
     Context context;
     TextView mTextview;
+    private Canvas canvas;
+    private Paint paint;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_space_invaders2);
-        mTextview = (TextView)findViewById(R.id.textView2);
-
-        mTextview.setText(getIntent().getStringExtra("Score:"));
+        
     }
     public void tryAgain(View view){
         Intent intent = new Intent( this, SpaceInvadersActivity.class);
         startActivity(intent);
     }
+
+
 
 }

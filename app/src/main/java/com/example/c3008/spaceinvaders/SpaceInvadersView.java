@@ -391,6 +391,10 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
             }
         }
         */
+
+
+
+
         RectF ship = playerShip.getRect();
         RectF inv = invaders[0].getRect();
 
@@ -420,6 +424,9 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
 
     }
+
+
+
 
     private boolean collision(){
         for(int i=0; i<numInvaders;i++) {
