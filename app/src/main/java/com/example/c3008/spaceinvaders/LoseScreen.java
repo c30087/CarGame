@@ -20,7 +20,7 @@ public class LoseScreen extends Activity {
 
     Button button;
     Context context;
-    TextView mTextview;
+
     private Canvas canvas;
     private Paint paint;
 
@@ -28,7 +28,7 @@ public class LoseScreen extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_space_invaders2);
-        
+
     }
     public void tryAgain(View view){
         Intent intent = new Intent( this, SpaceInvadersActivity.class);
