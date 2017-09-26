@@ -417,7 +417,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
             Intent intent = new Intent(context, LoseScreen.class);
             intent.putExtra("score",score);
             context.startActivity(intent);
-
+            score = 0;
         }
 
 
