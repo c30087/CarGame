@@ -1,6 +1,7 @@
 package com.example.c3008.spaceinvaders;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -140,6 +141,8 @@ public class Invader {
         if (getY() >= screenY){
             y = 0;
             SpaceInvadersView.updateScore();
+
+
         }
 
 

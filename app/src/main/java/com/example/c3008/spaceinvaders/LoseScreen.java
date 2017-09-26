@@ -27,7 +27,14 @@ public class LoseScreen extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        int score = getIntent().getIntExtra("score" , 0);
+
         setContentView(R.layout.activity_space_invaders2);
+        TextView textView = (TextView) findViewById(R.id.textView7);
+        textView.setText("Score: " + score);
+
 
     }
     public void tryAgain(View view){

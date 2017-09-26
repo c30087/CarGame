@@ -415,11 +415,9 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
         if (lives<0){
 
             Intent intent = new Intent(context, LoseScreen.class);
-
-            int message = score;
-            intent.putExtra("Score:", message);
+            intent.putExtra("score",score);
             context.startActivity(intent);
-            score = 0;
+
         }
 
 
@@ -481,7 +479,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
             // Draw the score and remaining lives
             // Change the brush color
             paint.setColor(Color.argb(255,  249, 129, 0));
-            paint.setTextSize(40);
+            paint.setTextSize(70);
             canvas.drawText("Score: " + score  , 10,50, paint);
 
 
