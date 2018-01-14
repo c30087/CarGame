@@ -87,12 +87,14 @@ public class PlayerShip {
         if(shipMoving == LEFT){
             if (x >0) {
                 x = x - shipSpeed / fps;
+
             }
         }
 
         if(shipMoving == RIGHT){
             if (x + length < screenX) {
                 x = x + shipSpeed / fps;
+
             }
         }
         //boundaries of playership x-coordinates
